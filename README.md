@@ -64,4 +64,4 @@ A collection of my various data science projects
 
 [**Test Link:**](https://github.com/caheredia/caheredia.github.io/blob/master/2017-10-30_ch_ez_assignment.ipynb)
 
-
+[**html link**](https://github.com/caheredia/caheredia.github.io/blob/master/2017-12-7_ch_nfl_predictions.html)
