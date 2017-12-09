@@ -61,4 +61,5 @@ A collection of my various data science projects
 ### Data Cleaning
 * [**Data Wrangling:**](https://nbviewer.jupyter.org/github/caheredia/Data_Science_Portfolio/blob/master/ID%20Analytics%20Report/develop/2017.10.2_ch_IDA_data_wrangling.ipynb) A data munging exercise, working with JSON file with 150,000 entries. <br /> **Keywords:** Data munging, JSON, Large data, Pandas, String manipulation
 
+https://github.com/caheredia/caheredia.github.io/blob/master/2017-10-30_ch_ez_assignment.ipynb
 
