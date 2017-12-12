@@ -39,18 +39,17 @@ Having trouble with Pages? Check out our [documentation](https://help.github.com
 
 # Data Science Portfolio
 ------
-A collection of my various data science projects 
+A collection of my various data science projects
 
 ## Table Of Contents
 
-### Data Storytelling 
+### Data Storytelling
 
 * [**Web Crawling for data:**](https://nbviewer.jupyter.org/github/caheredia/Data_Science_Portfolio/blob/master/acorns/develop/macyscraper/macyscraper/spiders/2017-11-12_ch_macys_product_list.ipynb) Capturing data with a [scrapy](https://scrapy.org/) web spider, an open source framework for data scraping. This web spider crawls a retailers site to build an inventory list with prices. The spider-generated inventory table contains over 135,000 entries. Because it could be run through a cloud service, e.g. Scrapy Cloud, this method is extensible and scalable. <br />  **Keywords:** Web Spider, Web Crawler, Scrapy, Pandas, Data visualization
 
-* [**Split Test Analysis with Bayes Statistics:**](https://nbviewer.jupyter.org/github/caheredia/Data_Science_Portfolio/blob/master/Galvanize/develop/q3.ipynb
-) A product split test analysis starting from a table of coversion rates. <br />  **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization
+* [**Split Test Analysis with Bayes Statistics:**](/ab/q3-Copy1.md) A product split test analysis starting from a table of coversion rates. <br />  **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization
 
-* [**Geographic sales data:**](https://nbviewer.jupyter.org/github/caheredia/Data_Science_Portfolio/blob/master/EZ/deliver/2017-10-30_ch_ez_assignment.ipynb) A sample of geographic sales data for California. Geospatial data (latitude and longitude) is logged from two CSV files and merged into one table by order identification. The geo data is used to extrapolate zip code, city, and average income. <br />  **Keywords:** Econometrics, Geographic data, Pandas, Google maps, Heatmap, Data analytics, Table merge 
+* [**Geographic sales data:**](/ez/2017-10-30_ch_ez_assignment.md) A sample of geographic sales data for California. Geospatial data (latitude and longitude) is logged from two CSV files and merged into one table by order identification. The geo data is used to extrapolate zip code, city, and average income. <br />  **Keywords:** Econometrics, Geographic data, Pandas, Google maps, Heatmap, Data analytics, Table merge 
 
 * [**Online dating stats:**](https://nbviewer.jupyter.org/github/caheredia/Data_Science_Portfolio/blob/master/Responses/deliver/2017-8-21_ch_okc_response_data_bayes.ipynb) An analysis, with posterior distributions, of dating data for a Latino test account compared to similar demographics.  <br />   **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization
 
