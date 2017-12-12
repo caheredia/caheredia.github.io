@@ -67,3 +67,5 @@ A collection of my various data science projects
 [**html link**](https://github.com/caheredia/caheredia.github.io/blob/master/2017-12-7_ch_nfl_predictions.html)
 
 [**markdown link**](https://github.com/caheredia/caheredia.github.io/blob/master/2017-12-7_ch_nfl_predictions.md)
+
+[**Will this link**](2017-12-7_ch_nfl_predictions.md)
