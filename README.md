@@ -2,7 +2,7 @@
 ------
 ## Table Of Contents
 
-### Data Storytelling
+#### Data Storytelling
 
 * [**Web Crawling for data:**](/macys/2017-11-12_ch_macys_product_list.md) Capturing data with a [scrapy](https://scrapy.org/) web spider, an open source framework for data scraping. This web spider crawls a retailers site to build an inventory list with prices. The spider-generated inventory table contains over 135,000 entries. Because it could be run through a cloud service, e.g. Scrapy Cloud, this method is extensible and scalable. <br />  **Keywords:** Web Spider, Web Crawler, Scrapy, Pandas, Data visualization
 
@@ -14,5 +14,5 @@
 
 * [**Online dating stats:**](/okc/2017-8-21_ch_okc_response_data_bayes.md) An analysis, with posterior distributions, of dating data for a Latino test account compared to similar demographics.  <br />   **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization, Credible Interval
 
-### Data Cleaning
+#### Data Cleaning
 * [**Data Wrangling:**](/IDA/2017.10.2_ch_IDA_data_wrangling.ipynb) A data munging exercise, working with JSON file with 150,000 entries. <br /> **Keywords:** Data munging, JSON, Large data, Pandas, String manipulation
