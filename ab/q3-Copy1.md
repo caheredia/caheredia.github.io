@@ -100,9 +100,10 @@ Without these granular data, we can at least look at the quote rate per variatio
 
 
 ```python
-df['Empirical rate %'] = df.Quotes / df.Views *100    #divides Quotes column by Views 
-df['Empirical rate %'] = df['Empirical rate %'] .round(2)            #rounds to two decimal places 
-df.set_index("Bucket", inplace = True )     #changes the index to 'Bucket'
+# divides Quotes column by Views
+df['Empirical rate %'] = (df.Quotes / df.Views * 100).round(2)
+# changes the index to 'Bucket'
+df.set_index("Bucket", inplace=True)
 df
 ```
 
@@ -196,13 +197,13 @@ def sample_size(p1, p2, sig):
 
 ```python
 # Sample size needed to have statistical significance
-sample_size(.0545, .0847, .05)
+sample_size(.0538, .0847, .05)
 ```
 
 
 
 
-    1101
+    1046
 
 
 
@@ -223,14 +224,16 @@ sample_size(.0545, .0966, .05)
 
 Looking at the 'Empirical rate %' column we see that Variation 3 performed the best with 8.42%, followed by Variation 4 with 6.57%. The other two variations performed below the Baseline, 5.38%.
 
-If we wanted to know about the confidence interval in the rates, we would invoke Bayesian statistics. By performing Bayesian statistics, we are interested in modeling the posterior distribution: Prob(True Quote Rate | Data) ~ Prob(Data|True Quote Rate)·Prob(True Quote Rate). We do so by treating the data as a Bernoulli distribution, assuming quotes are independent. For a Bernoulli distribution, we could say a quote sent is a 'success' or 1; a quote not sent, 0. In order to do so, we'll first need to generate binomial data for the variations. 
+If we wanted to know about the confidence interval in the rates, we would invoke Bayesian statistics. By performing Bayesian statistics, we are interested in modeling the posterior distribution: $Prob(True~Quote~Rate~|~Data) \propto Prob(Data~|~True~Quote~Rate)·Prob(True~Quote~Rate)$. We do so by treating the data as a Bernoulli distribution, assuming quotes are independent. For a Bernoulli distribution, we could say a quote sent is a 'success' or 1; a quote not sent, 0. In order to do so, we'll first need to generate binomial data for the variations. 
 
 
 ```python
-#Generate list data for variations 
-def simulated_data(data_name):  #Counts Quotes as ones and generates zeros for rest of list 
-    data = [1]*df.get_value(data_name, 'Quotes') + [0]*(df.get_value(data_name, 'Views') - df.get_value(data_name, 'Quotes'))    
-    return data 
+# Generate list data for variations
+def simulated_data(data_name):
+    # Counts Quotes as ones and generates zeros for rest of list
+    data = [1] * df.at[data_name, 'Quotes'] + [0] * (
+        df.at[data_name, 'Views'] - df.at[data_name, 'Quotes'])
+    return data
 ```
 
 
@@ -243,10 +246,6 @@ var3 = simulated_data("Variation 3")
 var4 = simulated_data("Variation 4")
 ```
 
-    /Users/cristian/anaconda/lib/python3.6/site-packages/ipykernel/__main__.py:3: FutureWarning: get_value is deprecated and will be removed in a future release. Please use .at[] or .iat[] accessors instead
-      app.launch_new_instance()
-
-
 
 ```python
 #First 40 data points for Variation 1, notice zeros after 30 ones
@@ -258,7 +257,7 @@ print("Data from var1: ", var1[:40], "...")
 
 ### Determining Variation 3 rate with Bayes analysis 
 
-Below we see, Bayes analysis yields a Variation 3 rate of 8.6%, similar to the Empirical data; however, now we have the 95% confidence interval (CI)  (6.4%, 10.8%). More data would tighten up the CI.
+Below we see, Bayes analysis yields a Variation 3 rate of 8.6%, similar to the Empirical data; however, now we have the 95% confidence interval (CI)  (6.4%, 10.8%). More data could potentially tighten up the CI.
 
 
 ```python
@@ -370,9 +369,11 @@ b = hyperpriors[1]
 true_rates = pymc.Beta('true_rates', a, b, size=5)
 
 # The observed values
-trials = df.Views.as_matrix() #Passes array of values 
-successes = df.Quotes.as_matrix() #Passes array 
-observed_values = pymc.Binomial('observed_values', trials, true_rates, observed=True, value=successes)
+trials = df.Views.values  # Passes array of values
+successes = df.Quotes.values  # Passes array
+# Likelihood
+observed_values = pymc.Binomial(
+    'observed_values', trials, true_rates, observed=True, value=successes)
 
 model = pymc.Model([a, b, true_rates, observed_values])
 mcmc = pymc.MCMC(model)
@@ -381,13 +382,13 @@ mcmc = pymc.MCMC(model)
 mcmc.sample(1000000, 500000)
 ```
 
-     [-----------------100%-----------------] 1000000 of 1000000 complete in 218.4 sec
+     [-----------------100%-----------------] 1000000 of 1000000 complete in 217.9 sec
 
 
 ```python
 plt.figure(figsize=(12,8))
 for i in range(5):
-    sns.kdeplot(mcmc.trace('true_rates')[:][:,i], shade = True, label = "Variation %s" % chr(48+i))
+    sns.kdeplot(mcmc.trace('true_rates')[:][:,i], shade = True, label = list(df.index)[i])
 ```
 
 
@@ -494,3 +495,31 @@ Calculating A/B Test Sample Size From the analysis 'Variation 3' is the clear wi
 If you were trying to increase quotes in specific categories or cities, then over these specific categories and cities a similar analysis could be run. 
 
 Other metrics that would have been of use: What is the conversion rate for quotes sent? Armed with conversion rates an expected return could be calculated. That would be an important metric to convey the return on investment. 
+
+
+```python
+%watermark -dmvgp numpy,pandas,matplotlib,seaborn,patsy,pymc3,theano
+```
+
+    2017-12-14 
+    
+    CPython 3.6.3
+    IPython 6.2.1
+    
+    numpy 1.13.3
+    pandas 0.21.0
+    matplotlib 2.0.0
+    seaborn 0.7.1
+    patsy 0.4.1
+    pymc3 3.2
+    theano 1.0.1
+    
+    compiler   : GCC 4.2.1 Compatible Clang 4.0.1 (tags/RELEASE_401/final)
+    system     : Darwin
+    release    : 17.3.0
+    machine    : x86_64
+    processor  : i386
+    CPU cores  : 4
+    interpreter: 64bit
+    Git hash   : 8c9602dfa4728c90128c698c29da7551751f0fc7
+

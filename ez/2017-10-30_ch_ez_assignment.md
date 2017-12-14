@@ -980,16 +980,6 @@ fig.add_layer(gmaps.heatmap_layer(locations))
 embed_minimal_html('map.html', views=[fig])
 ```
 
-
-```python
-%%HTML
-<iframe width = "100%" height = "475" src="map.html"></ iframe>
-```
-
-
-<iframe width = "100%" height = "475" src="map.html"></ iframe>
-
-
 # Conclusion
 
 ## Insights to advance a company financially
@@ -1003,4 +993,14 @@ The next graphic of interest is the **Estimated Delivery Time [s] histogram**. I
 Unfortunately, there was insufficient day and time data. Such data could have yielded the day and time most purchases are made. Armed with that information, one such testable hypothesis, perhaps on a smaller market, could have been to run promotions on days when sales are low. 
 
 The heatmap below shows hot spots for where most of the sales are geographical generated. Most of the high-density locations (Bay Area, Los Angeles, San Diego) are well represented. However, medium-sized cities like Sacramento and Fresno are virtually untapped. Moreover, the San Joaquin Valley is a largely untapped market.
+
+
+
+```python
+%%HTML
+<iframe width = "100%" height = "475" src="map.html"></ iframe>
+```
+
+
+<iframe width = "100%" height = "475" src="map.html"></ iframe>
 

@@ -4,9 +4,9 @@
 
 #### Data Storytelling
 
-* [**Web Crawling for data:**](/macys/2017-11-12_ch_macys_product_list.md) Capturing data with a [scrapy](https://scrapy.org/) web spider, an open source framework for data scraping. This web spider crawls a retailers site to build an inventory list with prices. The spider-generated inventory table contains over 135,000 entries. Because it could be run through a cloud service, e.g. Scrapy Cloud, this method is extensible and scalable. <br />  **Keywords:** Web Spider, Web Crawler, Scrapy, Pandas, Data visualization
-
 * [**Split Test Analysis with Bayes Statistics:**](/ab/q3-Copy1.md) A product split test analysis starting from a table of coversion rates. <br />  **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization, Calculating A/B Test Sample Size, Credible Interval 
+
+* [**Web Crawling for data:**](/macys/2017-11-12_ch_macys_product_list.md) Capturing data with a [scrapy](https://scrapy.org/) web spider, an open source framework for data scraping. This web spider crawls a retailers site to build an inventory list with prices. The spider-generated inventory table contains over 135,000 entries. Because it could be run through a cloud service, e.g. Scrapy Cloud, this method is extensible and scalable. <br />  **Keywords:** Web Spider, Web Crawler, Scrapy, Pandas, Data visualization
 
 * [**Geographic sales data:**](/ez/2017-10-30_ch_ez_assignment.md) A sample of geographic sales data for California. Geospatial data (latitude and longitude) is logged from two CSV files and merged into one table by order identification. The geo data is used to extrapolate zip code, city, and average income. <br />  **Keywords:** Econometrics, Geographic data, Pandas, Google maps, Heatmap, Data analytics, Table merge 
 
