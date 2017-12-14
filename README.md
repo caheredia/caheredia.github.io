@@ -15,4 +15,4 @@
 * [**Online dating stats:**](/okc/2017-8-21_ch_okc_response_data_bayes.md) An analysis, with posterior distributions, of dating data for a Latino test account compared to similar demographics.  <br />   **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization, Credible Interval
 
 #### Data Cleaning
-* [**Data Wrangling:**](/IDA/2017.10.2_ch_IDA_data_wrangling.md) A data munging exercise, working with JSON file with 150,000 entries. <br /> **Keywords:** Data munging, JSON, Large data, Pandas, String manipulation
+* [**Data Wrangling:**](https://github.com/caheredia/Data_Science_Portfolio/blob/master/ID%20Analytics%20Report/develop/2017.10.2_ch_IDA_data_wrangling.ipynb) A data munging exercise, working with JSON file with 150,000 entries. <br /> **Keywords:** Data munging, JSON, Large data, Pandas, String manipulation
