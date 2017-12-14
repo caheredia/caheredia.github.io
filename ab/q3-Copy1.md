@@ -2,6 +2,12 @@
 <h1>Table of Contents<span class="tocSkip"></span></h1>
 <div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><span><a href="#Introduction:-Split-Test-Analysis" data-toc-modified-id="Introduction:-Split-Test-Analysis-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction: Split Test Analysis</a></span></li><li><span><a href="#Analysis" data-toc-modified-id="Analysis-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Analysis</a></span><ul class="toc-item"><li><span><a href="#Loading-data" data-toc-modified-id="Loading-data-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Loading data</a></span></li><li><span><a href="#What's-your-interpretation-of-these-results?" data-toc-modified-id="What's-your-interpretation-of-these-results?-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>What's your interpretation of these results?</a></span></li><li><span><a href="#Calculating-A/B-Test-Sample-Size" data-toc-modified-id="Calculating-A/B-Test-Sample-Size-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Calculating A/B Test Sample Size</a></span></li><li><span><a href="#Models" data-toc-modified-id="Models-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Models</a></span><ul class="toc-item"><li><span><a href="#Determining-Variation-3-rate-with-Bayes-analysis" data-toc-modified-id="Determining-Variation-3-rate-with-Bayes-analysis-2.4.1"><span class="toc-item-num">2.4.1&nbsp;&nbsp;</span>Determining Variation 3 rate with Bayes analysis</a></span></li><li><span><a href="#Hierarchical-Model:--A/B-Test" data-toc-modified-id="Hierarchical-Model:--A/B-Test-2.4.2"><span class="toc-item-num">2.4.2&nbsp;&nbsp;</span>Hierarchical Model:  A/B Test</a></span></li></ul></li></ul></li><li><span><a href="#Summary" data-toc-modified-id="Summary-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Summary</a></span></li></ul></div>
 
+# Introduction: Split Test Analysis
+
+Often companies demand quick and effective methods for conducting market research. This type of research is necessary for testing customer reactions to visuals or campaigns. In this example, four treatments were applied to a website. The purpose was to increase sales quotes sent from clients to customers—conversion rates. This notebook analyzes which treatments generate the most activity. The activity is quantified with Bayesian A/B testing. Bayes inference has the advantage of generating credible intervals for each rate. Two sets of rates are calculated. One is considered the empirical rate, calculated by taking the ratio of views to conversions. The second rate, 'True rate', is calculated by pooling the data with a Bayes hierarchical model. When looking at the posterior distributions, the probability that Variation 3 gets more quotes than the Baseline is 98%. 
+
+In summary, the data looks promising; however, the sample size needed for statistical significance is closer to 1000 views per variation. Given the number of views (approximately 600 per variation), a stronger rate of 9.66% is necessary for statistical significance. This discrepancy is reflected in the credible intervals for Variation 3 (p_3), [0.064, 0.108]. With more data, this type of analysis can effectively inform a business decision. 
+
 
 ```python
 import pandas as pd
@@ -12,12 +18,6 @@ import statsmodels.stats.api as sms
 import matplotlib.pyplot as plt
 %matplotlib inline
 ```
-
-# Introduction: Split Test Analysis
-
-Often companies demand quick and effective methods for conducting market research. This type of research is necessary for testing customer reactions to visuals or campaigns. In this example, four treatments were applied to a website. The purpose was to increase sales quotes sent from clients to customers—conversion rates. This notebook analyzes which treatments generate the most activity. The activity is quantified with Bayesian A/B testing. Two sets of rates are calculated. One is considered the empirical rate, calculated by taking the ratio of views to conversions. The second rate, 'True rate', is calculated by pooling the data with a Bayes hierarchical model. When looking at the posterior distributions, the probability that Variation 3 gets more quotes than the Baseline is 98%. 
-
-In summary, the data looks promising; however, the sample size needed for statistical significance is closer to 1000 views per variation. Given the number of views (approximately 600 per variation), a stronger rate of 9.66% is necessary for statistical significance. With more data, this type of analysis can effectively inform a business decision. 
 
 # Analysis
 
@@ -110,6 +110,19 @@ df
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -163,6 +176,11 @@ df
 
 
 ## Calculating A/B Test Sample Size
+We can utilize  statistical significance in two ways: 
+1. To determine the number of sample size needed to have statistical significance for conversion rates reported
+2. To determine the statistical significance possible with the number of views we currently have. 
+
+Given the conversion rate probabilities 5.45% and 8.47% we would need at least 1000 views per variation. Since we only have about 600 views per variation, at best we can claim, a wider margin, of 5.45% and 10%. But the data doesn't support that claim.  
 
 
 ```python
@@ -177,6 +195,7 @@ def sample_size(p1, p2, sig):
 
 
 ```python
+# Sample size needed to have statistical significance
 sample_size(.0545, .0847, .05)
 ```
 
@@ -189,6 +208,7 @@ sample_size(.0545, .0847, .05)
 
 
 ```python
+# What statistical significance would be satisfied with current sample size
 sample_size(.0545, .0966, .05)
 ```
 
@@ -223,9 +243,14 @@ var3 = simulated_data("Variation 3")
 var4 = simulated_data("Variation 4")
 ```
 
+    /Users/cristian/anaconda/lib/python3.6/site-packages/ipykernel/__main__.py:3: FutureWarning: get_value is deprecated and will be removed in a future release. Please use .at[] or .iat[] accessors instead
+      app.launch_new_instance()
+
+
 
 ```python
-print("Data from var1: ", var1[:40], "...")  #First 40 data points for Variation 1, notice zeros after 30 ones
+#First 40 data points for Variation 1, notice zeros after 30 ones
+print("Data from var1: ", var1[:40], "...")  
 ```
 
     Data from var1:  [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] ...
@@ -254,11 +279,8 @@ with Model() as model: # model specifications in PyMC3 are wrapped in a with-sta
 ```
 
     Auto-assigning NUTS sampler...
-    Initializing NUTS using ADVI...
-    Average Loss = 309.86:   5%|▍         | 9958/200000 [00:01<00:32, 5787.89it/s]
-    Convergence archived at 10100
-    Interrupted at 10,100 [5%]: Average Loss = 466.01
-    100%|██████████| 5500/5500 [00:09<00:00, 579.87it/s]
+    Initializing NUTS using jitter+adapt_diag...
+    100%|██████████| 5500/5500 [00:07<00:00, 771.41it/s]
 
 
     
@@ -267,13 +289,13 @@ with Model() as model: # model specifications in PyMC3 are wrapped in a with-sta
       Mean             SD               MC Error         95% HPD interval
       -------------------------------------------------------------------
       
-      0.055            0.009            0.000            [0.037, 0.073]
+      0.055            0.009            0.000            [0.038, 0.074]
     
       Posterior quantiles:
       2.5            25             50             75             97.5
       |--------------|==============|==============|--------------|
       
-      0.039          0.049          0.055          0.061          0.075
+      0.038          0.049          0.055          0.061          0.075
     
     
     p_3:
@@ -292,7 +314,7 @@ with Model() as model: # model specifications in PyMC3 are wrapped in a with-sta
 
 
 
-![png](output_20_2.png)
+![png](output_19_2.png)
 
 
 
@@ -309,7 +331,7 @@ plt.axvline(0.00, color = 'orange');
 ```
 
 
-![png](output_22_0.png)
+![png](output_21_0.png)
 
 
 
@@ -359,7 +381,7 @@ mcmc = pymc.MCMC(model)
 mcmc.sample(1000000, 500000)
 ```
 
-     [-----------------100%-----------------] 1000000 of 1000000 complete in 363.5 sec
+     [-----------------100%-----------------] 1000000 of 1000000 complete in 218.4 sec
 
 
 ```python
@@ -369,7 +391,7 @@ for i in range(5):
 ```
 
 
-![png](output_28_0.png)
+![png](output_27_0.png)
 
 
 
@@ -393,6 +415,19 @@ df
 
 
 <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -416,35 +451,35 @@ df
       <td>32</td>
       <td>595</td>
       <td>5.38</td>
-      <td>5.45</td>
+      <td>5.50</td>
     </tr>
     <tr>
       <th>Variation 1</th>
       <td>30</td>
       <td>599</td>
       <td>5.01</td>
-      <td>5.09</td>
+      <td>5.16</td>
     </tr>
     <tr>
       <th>Variation 2</th>
       <td>18</td>
       <td>622</td>
       <td>2.89</td>
-      <td>2.98</td>
+      <td>3.37</td>
     </tr>
     <tr>
       <th>Variation 3</th>
       <td>51</td>
       <td>606</td>
       <td>8.42</td>
-      <td>8.47</td>
+      <td>8.03</td>
     </tr>
     <tr>
       <th>Variation 4</th>
       <td>38</td>
       <td>578</td>
       <td>6.57</td>
-      <td>6.64</td>
+      <td>6.48</td>
     </tr>
   </tbody>
 </table>

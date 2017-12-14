@@ -1,6 +1,9 @@
 
 <h1>Table of Contents<span class="tocSkip"></span></h1>
-<div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span></li><li><span><a href="#Data-Manipulation" data-toc-modified-id="Data-Manipulation-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Data Manipulation</a></span><ul class="toc-item"><li><span><a href="#Join-these-tables-in-a-meaningful-way" data-toc-modified-id="Join-these-tables-in-a-meaningful-way-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Join these tables in a meaningful way</a></span></li><li><span><a href="#Find-at-least-one-source-of-external-information-that-you-think-would-augment-this-table-well-and-add-it-into-the-joined-table." data-toc-modified-id="Find-at-least-one-source-of-external-information-that-you-think-would-augment-this-table-well-and-add-it-into-the-joined-table.-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Find at least one source of external information that you think would augment this table well and add it into the joined table.</a></span></li><li><span><a href="#Explain-(at-a-high-level)-how-you-would-perform-this-join-on-a-live-data-pipeline-in-a-performant-way." data-toc-modified-id="Explain-(at-a-high-level)-how-you-would-perform-this-join-on-a-live-data-pipeline-in-a-performant-way.-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Explain (at a high level) how you would perform this join on a live data pipeline in a performant way.</a></span></li><li><span><a href="#Use-any-clustering/classification-technique-to-divide-the-data-into-at-least-3-and-at-most-20-groups.-Annotate-your-joined-table-with-this-classification." data-toc-modified-id="Use-any-clustering/classification-technique-to-divide-the-data-into-at-least-3-and-at-most-20-groups.-Annotate-your-joined-table-with-this-classification.-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Use any clustering/classification technique to divide the data into at least 3 and at most 20 groups. Annotate your joined table with this classification.</a></span></li></ul></li><li><span><a href="#Visualization" data-toc-modified-id="Visualization-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Visualization</a></span><ul class="toc-item"><li><span><a href="#Create-any-visualization-of-the-data-that-you-think-would-display-meaningful-insight." data-toc-modified-id="Create-any-visualization-of-the-data-that-you-think-would-display-meaningful-insight.-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Create any visualization of the data that you think would display meaningful insight.</a></span></li></ul></li><li><span><a href="#Conclusion" data-toc-modified-id="Conclusion-4"><span class="toc-item-num">4&nbsp;&nbsp;</span>Conclusion</a></span><ul class="toc-item"><li><span><a href="#Take-Away-Explain-(at-a-high-level)-how-you-could-use-any-insights-derived-above-to-advance-the-company-financially." data-toc-modified-id="Take-Away-Explain-(at-a-high-level)-how-you-could-use-any-insights-derived-above-to-advance-the-company-financially.-4.1"><span class="toc-item-num">4.1&nbsp;&nbsp;</span>Take Away Explain (at a high level) how you could use any insights derived above to advance the company financially.</a></span></li></ul></li></ul></div>
+<div class="toc" style="margin-top: 1em;"><ul class="toc-item"><li><span><a href="#Introduction" data-toc-modified-id="Introduction-1"><span class="toc-item-num">1&nbsp;&nbsp;</span>Introduction</a></span></li><li><span><a href="#Data-Exploration" data-toc-modified-id="Data-Exploration-2"><span class="toc-item-num">2&nbsp;&nbsp;</span>Data Exploration</a></span><ul class="toc-item"><li><span><a href="#Join-tables-in-a-meaningful-way" data-toc-modified-id="Join-tables-in-a-meaningful-way-2.1"><span class="toc-item-num">2.1&nbsp;&nbsp;</span>Join tables in a meaningful way</a></span></li><li><span><a href="#Adding-external-information-to-augment-table" data-toc-modified-id="Adding-external-information-to-augment-table-2.2"><span class="toc-item-num">2.2&nbsp;&nbsp;</span>Adding external information to augment table</a></span></li><li><span><a href="#Cluster-data-into-at-least-3-and-at-most-20-groups" data-toc-modified-id="Cluster-data-into-at-least-3-and-at-most-20-groups-2.3"><span class="toc-item-num">2.3&nbsp;&nbsp;</span>Cluster data into at least 3 and at most 20 groups</a></span></li><li><span><a href="#Data-Visualization" data-toc-modified-id="Data-Visualization-2.4"><span class="toc-item-num">2.4&nbsp;&nbsp;</span>Data Visualization</a></span></li></ul></li><li><span><a href="#Conclusion" data-toc-modified-id="Conclusion-3"><span class="toc-item-num">3&nbsp;&nbsp;</span>Conclusion</a></span><ul class="toc-item"><li><span><a href="#Insights-to-advance-a-company-financially" data-toc-modified-id="Insights-to-advance-a-company-financially-3.1"><span class="toc-item-num">3.1&nbsp;&nbsp;</span>Insights to advance a company financially</a></span></li></ul></li></ul></div>
+
+# Introduction 
+Depending on the business, often sales data is recorded in a nonstandard form. But in order to run analytics on sales data, raw data files need to be cleaned up and merged together in a meaningful way. Therefore, this Jupyter notebook merges two CSV files (one addressing delivery times associated with geoinformation, the other individual sales). The notebook unpacked many fields from geoinformation such as zip code and city and average income. It also assessed metrics by graphing extrapolated data. The data revealed that most of the sales are concentrated in large cities: San Francisco, Oakland, San Diego. The findings reveal that bay area business strategies are effective relative to the rest of the state. The heatmap graph of sales reveals many potential markets for growth. 
 
 
 ```python
@@ -18,12 +21,9 @@ from ipywidgets.embed import embed_minimal_html
 gmaps.configure(api_key=os.environ["GOOGLE_API_KEY"])
 ```
 
-# Introduction 
-Depending on the business, often sales data is recorded in a nonstandard form. But in order to run analytics on sales data, raw data files need to be cleaned up and merged together in a meaningful way. Therefore, this Jupyter notebook merges two CSV files (one addressing delivery times associated with geoinformation, the other individual sales). The notebook unpacked many fields from geoinformation such as zip code and city and average income. It also assessed metrics by graphing extrapolated data. The data revealed that most of the sales are concentrated in large cities: San Francisco, Oakland, San Diego. The findings reveal that bay area business strategies are effective relative to the rest of the state. The heatmap graph of sales reveals many potential markets for growth. 
+# Data Exploration
 
-# Data Manipulation 
-
-## Join these tables in a meaningful way 
+## Join tables in a meaningful way 
 Below I'll join the tables with merge on the column 'order id'. It should be noted that the tables are not of equal size, thus some of the features (columns) will have missing values. 
 
 
@@ -240,7 +240,7 @@ df_join[1020:1025]
 
 
 
-## Find at least one source of external information that you think would augment this table well and add it into the joined table.
+## Adding external information to augment table
 
 - Using the uszipcode 0.1.3 python package I can look up the zipcode, city, and average income for each latitude, longitude entry
 - Using the Date Functionality in Pandas will allow the unpacking of the time stamp into days and time, which will give a more granular view of when purchases occur. 
@@ -504,12 +504,7 @@ df_join.day.value_counts()
 
 
 
-## Explain (at a high level) how you would perform this join on a live data pipeline in a performant way.
-
-To perform this join on a pipeline I would implement the join SQL command, e.g, FULL OUTER JOIN. Or design the data capture to record to a single table instead of two. 
-
-
-## Use any clustering/classification technique to divide the data into at least 3 and at most 20 groups. Annotate your joined table with this classification.
+## Cluster data into at least 3 and at most 20 groups
 
 A list of the features for the clustered table below : <br>
 - **city**: The city corresponding to geoinformation 
@@ -863,9 +858,7 @@ df_city_group_time.sort_values(by='avg time', ascending=False).head()
 
 
 
-# Visualization 
-
-## Create any visualization of the data that you think would display meaningful insight.
+## Data Visualization 
 
 
 ```python
@@ -873,7 +866,7 @@ df_join.city.value_counts().plot(kind='bar', alpha=.5, color='orange',  figsize=
 ```
 
 
-![png](output_26_0.png)
+![png](output_24_0.png)
 
 
 
@@ -882,7 +875,7 @@ df_city_group['sum'].sort_values(ascending = False).plot(kind='bar', alpha=.5, c
 ```
 
 
-![png](output_27_0.png)
+![png](output_25_0.png)
 
 
 
@@ -921,7 +914,7 @@ df_join.sales.plot.hist(
 
 
 
-![png](output_29_1.png)
+![png](output_27_1.png)
 
 
 
@@ -931,7 +924,7 @@ df_join.sales.plot.hist(
 ```
 
 
-![png](output_30_0.png)
+![png](output_28_0.png)
 
 
 
@@ -951,7 +944,7 @@ df_join['delivery time'].plot.hist(
 
 
 
-![png](output_31_1.png)
+![png](output_29_1.png)
 
 
 
@@ -970,7 +963,7 @@ g.fig.suptitle('Average delivery time versus sum of sales');
 ```
 
 
-![png](output_32_0.png)
+![png](output_30_0.png)
 
 
 
@@ -987,9 +980,19 @@ fig.add_layer(gmaps.heatmap_layer(locations))
 embed_minimal_html('map.html', views=[fig])
 ```
 
+
+```python
+%%HTML
+<iframe width = "100%" height = "475" src="map.html"></ iframe>
+```
+
+
+<iframe width = "100%" height = "475" src="map.html"></ iframe>
+
+
 # Conclusion
 
-## Take Away Explain (at a high level) how you could use any insights derived above to advance the company financially.
+## Insights to advance a company financially
 
 Starting with the first graph above, the **Histogram of Sales by City** we see that San Francisco yields the most sales. The sales in San Francisco are nearly 3 times the sales of Oakland—the second leader in sales transactions. One could conclude that whatever marketing strategies are being used in used in San Francisco should be executed in other cities as well, especially cities in the east bay. However, local competition could be capturing the Oakland market.
 
@@ -1000,14 +1003,4 @@ The next graphic of interest is the **Estimated Delivery Time [s] histogram**. I
 Unfortunately, there was insufficient day and time data. Such data could have yielded the day and time most purchases are made. Armed with that information, one such testable hypothesis, perhaps on a smaller market, could have been to run promotions on days when sales are low. 
 
 The heatmap below shows hot spots for where most of the sales are geographical generated. Most of the high-density locations (Bay Area, Los Angeles, San Diego) are well represented. However, medium-sized cities like Sacramento and Fresno are virtually untapped. Moreover, the San Joaquin Valley is a largely untapped market.
-
-
-
-```python
-%%HTML
-<iframe width = "100%" height = "475" src="map.html"></ iframe>
-```
-
-
-<iframe width = "100%" height = "475" src="map.html"></ iframe>
 
