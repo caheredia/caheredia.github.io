@@ -4,9 +4,7 @@
 
 #### Data Storytelling
 
-* [**Split Test Analysis with Bayes Statistics:**](/ab/q3-Copy1.md) A product split test analysis starting from a table of coversion rates. <br />  **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization, Calculating A/B Test Sample Size, Credible Interval 
-
-* [**Split Test Analysis with Bayes Statistics:**](q3-Copy1.html) A product split test analysis starting from a table of coversion rates. <br />  **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization, Calculating A/B Test Sample Size, Credible Interval
+* [**Split Test Analysis with Bayes Statistics:**](https://nbviewer.jupyter.org/github/caheredia/Data_Science_Portfolio/blob/master/Galvanize/develop/q3.ipynb) A product split test analysis starting from a table of coversion rates. <br />  **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization, Calculating A/B Test Sample Size, Credible Interval 
 
 * [**Web Crawling for data:**](/macys/2017-11-12_ch_macys_product_list.md) Capturing data with a [scrapy](https://scrapy.org/) web spider, an open source framework for data scraping. This web spider crawls a retailers site to build an inventory list with prices. The spider-generated inventory table contains over 135,000 entries. Because it could be run through a cloud service, e.g. Scrapy Cloud, this method is extensible and scalable. <br />  **Keywords:** Web Spider, Web Crawler, Scrapy, Pandas, Data visualization
 
