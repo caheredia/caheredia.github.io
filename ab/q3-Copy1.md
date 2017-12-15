@@ -224,7 +224,7 @@ sample_size(.0545, .0966, .05)
 
 Looking at the 'Empirical rate %' column we see that Variation 3 performed the best with 8.42%, followed by Variation 4 with 6.57%. The other two variations performed below the Baseline, 5.38%.
 
-If we wanted to know about the confidence interval in the rates, we would invoke Bayesian statistics. By performing Bayesian statistics, we are interested in modeling the posterior distribution: $Prob(True~Quote~Rate~|~Data) \propto Prob(Data~|~True~Quote~Rate)·Prob(True~Quote~Rate)$. We do so by treating the data as a Bernoulli distribution, assuming quotes are independent. For a Bernoulli distribution, we could say a quote sent is a 'success' or 1; a quote not sent, 0. In order to do so, we'll first need to generate binomial data for the variations. 
+If we wanted to know about the confidence interval in the rates, we would invoke Bayesian statistics. By performing Bayesian statistics, we are interested in modeling the posterior distribution: $$Prob(True~Quote~Rate~|~Data) \propto Prob(Data~|~True~Quote~Rate)·Prob(True~Quote~Rate)$$. We do so by treating the data as a Bernoulli distribution, assuming quotes are independent. For a Bernoulli distribution, we could say a quote sent is a 'success' or 1; a quote not sent, 0. In order to do so, we'll first need to generate binomial data for the variations. 
 
 
 ```python
