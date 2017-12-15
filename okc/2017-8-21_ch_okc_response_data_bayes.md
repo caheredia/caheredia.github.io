@@ -520,6 +520,7 @@ pm.summary(trace)
 The test account experienced an average reply rate of 23% with a 95 % CI (17.5%, 28.2%). From the chart below we see this is in agreement with okc data for a Latino male. The next step is to look at response rate per individual groups.
 
 <img src="../figures/Reply_rate_by_sender.png">
+
 Source: [OkCupid Blog](https://theblog.okcupid.com/how-your-race-affects-the-messages-you-get-39c68771b99e)
 
 # Hyperparameter tuning
@@ -643,7 +644,7 @@ for i in range(5):
 ```
 
 
-![png](output_38_0.png)
+![png](output_39_0.png)
 
 
 
@@ -843,7 +844,7 @@ plt.axvline(0.00, color='orange')
 
 
 
-![png](output_44_1.png)
+![png](output_45_1.png)
 
 
 
@@ -900,11 +901,11 @@ pm.traceplot(trace)
 
 
 
-![png](output_49_1.png)
+![png](output_50_1.png)
 
 
 
-![png](output_49_2.png)
+![png](output_50_2.png)
 
 
 
