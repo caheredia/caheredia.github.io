@@ -4,6 +4,8 @@
 
 #### Data Storytelling
 
+* [**Chicago Crime Data (work in progress)**](https://caheredia.github.io/chicago_crime_data/build/html/index.html) An exploration of reported Chicago Crime data. This dataset reflects reported incidents of crime (with the exception of murders where data exists for each victim) that occurred in the City of Chicago from 2001 to present, minus the most recent seven days. Data is extracted from the Chicago Police Department’s CLEAR (Citizen Law Enforcement Analysis and Reporting) system.
+
 * [**Split Test Analysis with Bayes Statistics:**](https://nbviewer.jupyter.org/github/caheredia/Data_Science_Portfolio/blob/master/Galvanize/deliver/q3-Copy1.ipynb#Loading-data) A product split test analysis starting from a table of coversion rates. <br />  **Keywords:** A/B Test, Bayesian inference, Pandas, Data visualization, Calculating A/B Test Sample Size, Credible Interval 
 
 * [**Web Crawling for data:**](/macys/2017-11-12_ch_macys_product_list.md) Capturing data with a [scrapy](https://scrapy.org/) web spider, an open source framework for data scraping. This web spider crawls a retailers site to build an inventory list with prices. The spider-generated inventory table contains over 135,000 entries. Because it could be run through a cloud service, e.g. Scrapy Cloud, this method is extensible and scalable. <br />  **Keywords:** Web Spider, Web Crawler, Scrapy, Pandas, Data visualization
