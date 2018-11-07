@@ -1,5 +1,4 @@
 # Data Science Portfolio
-see code on [GitHub](https://github.com/caheredia)
 ------
 ## Table Of Contents
 
@@ -14,3 +13,4 @@ see code on [GitHub](https://github.com/caheredia)
 
 * [**Micro-hydro power generation:**](/hydro/2017-10-6_ch_micro_hydro_roi.md) Due diligence on the viability of utilizing micro-hydro power generators in California's San Joaquin Valley irrigation canals. This is a work in progress! <br />  **Keywords:** Entrepreneur ventures, Business Development, Return on investment, Net present value, Lists of cash flows, Levelized cost of electricity, Returns over time
 
+see code on [GitHub](https://github.com/caheredia)
